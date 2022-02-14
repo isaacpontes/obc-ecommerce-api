@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: isaac
+  password: 12345678
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: obc_ecommerce_api_development
+
+test:
+  <<: *default
+  database: obc_ecommerce_api_test
+
+production:
+  <<: *default
+  database: obc_ecommerce_api_production
+  username: obc_ecommerce_api
+  password: <%= ENV['OBC_ECOMMERCE_API_DATABASE_PASSWORD'] %>
